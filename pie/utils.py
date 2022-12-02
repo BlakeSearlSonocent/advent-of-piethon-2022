@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Tuple
 
 
 def file_to_string_list(filename: str) -> List[str]:
@@ -26,3 +26,9 @@ def empty_line_separated_group_to_string_lists(filename: str) -> List[List[str]]
 
     groups.append(current_group)
     return groups
+
+
+def file_to_string_pairs(filename: str) -> List[Tuple[str, str]]:
+    lines = file_to_string_list(filename)
+    return [(x, y) for x, y in [line.split() for line in lines]]
+
