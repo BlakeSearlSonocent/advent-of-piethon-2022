@@ -3,7 +3,7 @@ from typing import List, Tuple
 
 
 def file_to_string_list(filename: str) -> List[str]:
-    with open(f'{os.getcwd()}/pie/{filename}') as f:
+    with open(f"{os.getcwd()}/pie/{filename}") as f:
         return [line.rstrip() for line in f]
 
 
@@ -12,7 +12,9 @@ def empty_line_separated_group_to_int_lists(filename: str) -> List[List[int]]:
     return [[int(item) for item in string_list] for string_list in string_lists]
 
 
-def empty_line_separated_group_to_string_lists(filename: str) -> List[List[str]]:
+def empty_line_separated_group_to_string_lists(
+    filename: str,
+) -> List[List[str]]:
     string_list = file_to_string_list(filename)
 
     groups = []
@@ -31,4 +33,3 @@ def empty_line_separated_group_to_string_lists(filename: str) -> List[List[str]]
 def file_to_string_pairs(filename: str) -> List[Tuple[str, str]]:
     lines = file_to_string_list(filename)
     return [(x, y) for x, y in [line.split() for line in lines]]
-
