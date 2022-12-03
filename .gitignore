@@ -50,5 +50,5 @@ coverage.xml
 docs/_build/
 
 .idea
-*.txt
+input.txt
 *.pyc
