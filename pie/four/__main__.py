@@ -4,8 +4,8 @@ from pie.utils import file_to_string_pairs
 
 
 def assignment_set(assignment: str) -> Set[int]:
-    start, end = assignment.split("-")
-    return set(range(int(start), int(end) + 1))
+    start, end = [int(x) for x in assignment.split("-")]
+    return set(range(start, end + 1))
 
 
 def build_assignment_pairs() -> List[Tuple[Set[int], Set[int]]]:
