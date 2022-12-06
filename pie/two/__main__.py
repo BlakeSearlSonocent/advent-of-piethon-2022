@@ -1,4 +1,4 @@
-from pie.utils import file_to_string_pairs
+from pie.file_utils import file_to_string_pairs
 
 
 def map_to_symbol(choice: str) -> str:

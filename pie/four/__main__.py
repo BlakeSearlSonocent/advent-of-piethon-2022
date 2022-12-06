@@ -1,6 +1,6 @@
 from typing import Set, List, Tuple
 
-from pie.utils import file_to_string_pairs
+from pie.file_utils import file_to_string_pairs
 
 
 def assignment_set(assignment: str) -> Set[int]:

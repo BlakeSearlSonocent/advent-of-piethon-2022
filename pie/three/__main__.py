@@ -1,6 +1,6 @@
 from string import ascii_letters
 
-from pie.utils import file_to_string_list
+from pie.file_utils import file_to_string_list
 
 
 def sum_character_values(characters: list[str]) -> int:

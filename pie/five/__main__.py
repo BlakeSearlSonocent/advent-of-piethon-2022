@@ -2,7 +2,7 @@ import re
 from copy import deepcopy
 from typing import List, Tuple
 
-from pie.utils import file_to_string_list
+from pie.file_utils import file_to_string_list
 
 stacks_input = {
     1: list("QFMRLWCV"),

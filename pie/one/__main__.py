@@ -1,6 +1,6 @@
 from typing import List
 
-from pie.utils import empty_line_separated_group_to_int_lists
+from pie.file_utils import empty_line_separated_group_to_int_lists
 
 
 def get_elf_calories() -> List[int]:
