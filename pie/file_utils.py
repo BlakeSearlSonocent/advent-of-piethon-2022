@@ -6,6 +6,10 @@ def file_path(filename: str) -> str:
     return f"{os.getcwd()}/pie/{filename}"
 
 
+def read_line(filename: str) -> str:
+    return open(file_path(filename)).read()
+
+
 def file_to_string_list(filename: str) -> List[str]:
     with open(file_path(filename)) as f:
         return [line.rstrip() for line in f]
