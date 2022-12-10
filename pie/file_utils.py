@@ -6,8 +6,8 @@ def file_path(filename: str) -> str:
     return f"{os.getcwd()}/pie/{filename}"
 
 
-def read_line(filename: str) -> str:
-    return open(file_path(filename)).read()
+def read_input(filename: str) -> str:
+    return open(file_path(filename)).read().strip()
 
 
 def file_to_string_list(filename: str) -> List[str]:
@@ -21,7 +21,7 @@ def empty_line_separated_group_to_int_lists(filename: str) -> List[List[int]]:
 
 
 def empty_line_separated_group_to_string_lists(filename: str) -> List[List[str]]:
-    return [x.split("\n") for x in open(file_path(filename)).read().strip().split("\n\n")]
+    return [x.split("\n") for x in read_input(filename).split("\n\n")]
 
 
 def file_to_string_pairs(filename: str, separator=" ") -> List[Tuple[str, str]]:
