@@ -1,19 +1,16 @@
-from typing import List
+from more_itertools import windowed
 
 from pie.file_utils import read_input
-from pie.list_utils import windowed
-
-
-def no_repeats(subroutine: List[str]) -> bool:
-    return len(set(subroutine)) == len(subroutine)
-
-
-def first_packet_marker_index(subroutine_size: int):
-    datastream = read_input("six/input.txt")
-    subroutines = windowed(list(datastream), subroutine_size)
-    print(next(idx for idx, subroutine in enumerate(subroutines) if no_repeats(subroutine)) + subroutine_size)
-
 
 if __name__ == "__main__":
-    first_packet_marker_index(4)
-    first_packet_marker_index(14)
+    print(
+        [
+            next(
+                idx
+                for idx, subroutine in enumerate(windowed(read_input("six/input.txt"), size))
+                if len(set(subroutine)) == len(subroutine)
+            )
+            + size
+            for size in [4, 14]
+        ]
+    )

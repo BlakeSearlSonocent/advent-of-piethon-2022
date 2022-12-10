@@ -26,8 +26,8 @@ def count_tail_positions(knot_count: int):
         knots[0] = (head_x + head_dx, head_y + head_dy)
 
         for i in range(1, knot_count):
-            knot_x, knot_y = knots[i]
-            knot_dx, knot_dy = knot_delta(knots[i - 1], knots[i])
+            knot_x, knot_y = (knot := knots[i])
+            knot_dx, knot_dy = knot_delta(knots[i - 1], knot)
             knots[i] = (knot_x + knot_dx, knot_y + knot_dy)
 
         tail_positions.add(knots[-1])
