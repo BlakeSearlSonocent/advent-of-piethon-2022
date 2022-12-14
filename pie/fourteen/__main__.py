@@ -14,13 +14,11 @@ def solve(part_two=False):
         if (500, 0) in cave:
             break
 
-        new_sand = get_new_sand(cave, sand)
-        _, new_sand_y = new_sand
-
+        _, new_sand_y = new_sand = get_new_sand(cave, sand)
         if new_sand_y == cave_bound_bottom and not part_two:
             break
 
-        if new_sand == sand or (part_two and new_sand_y == cave_bound_bottom + 1):
+        if new_sand == sand or new_sand_y == cave_bound_bottom + 1:
             cave[new_sand] = "o"
             new_sand = 500, 0
 
@@ -43,10 +41,10 @@ def get_new_sand(cave, sand):
 
 def build_initial_cave():
     lines = file_to_string_list("fourteen/input.txt")
-    coord_lists = [
-        [tuple(string_coord.split(",")) for string_coord in re.findall("[0-9]+,[0-9]+", line)] for line in lines
+    coords = [
+        [tuple(map(int, string_coord.split(","))) for string_coord in re.findall("[0-9]+,[0-9]+", line)]
+        for line in lines
     ]
-    coords = [[(int(coord[0]), int(coord[1])) for coord in coord_list] for coord_list in coord_lists]
     cave = {}
     for coord_list in coords:
         pairs = zip(coord_list, coord_list[1:])
@@ -56,10 +54,8 @@ def build_initial_cave():
             direction_x, direction_y = sign(dx), sign(dy)
 
             for i in range(abs(dx) + 1):
-                cave[start_x + (direction_x * i), start_y] = "#"
-
-            for j in range(abs(dy) + 1):
-                cave[start_x, start_y + (direction_y * j)] = "#"
+                for j in range(abs(dy) + 1):
+                    cave[start_x + (direction_x * i), start_y + (direction_y * j)] = "#"
 
     return cave
 
