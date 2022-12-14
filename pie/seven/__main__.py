@@ -1,7 +1,7 @@
-from pie.file_utils import file_to_string_list
+from pie.file_utils import read_lines
 
 if __name__ == "__main__":
-    cmds = [line.split(" ") for line in file_to_string_list("seven/input.txt")]
+    cmds = [line.split(" ") for line in read_lines("seven/input.txt")]
 
     path, dirs = [], {}
     for cmd in cmds:

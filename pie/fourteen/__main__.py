@@ -2,7 +2,7 @@ import re
 
 from numpy import subtract, sign
 
-from pie.file_utils import file_to_string_list
+from pie.file_utils import read_lines
 
 
 def solve(part_two=False):
@@ -10,10 +10,7 @@ def solve(part_two=False):
     cave_bound_bottom = max([y for _, y in cave.keys()])
 
     sand = 500, 0
-    while True:
-        if (500, 0) in cave:
-            break
-
+    while (500, 0) not in cave:
         _, new_sand_y = new_sand = get_new_sand(cave, sand)
         if new_sand_y == cave_bound_bottom and not part_two:
             break
@@ -40,10 +37,9 @@ def get_new_sand(cave, sand):
 
 
 def build_initial_cave():
-    lines = file_to_string_list("fourteen/input.txt")
     coords = [
-        [tuple(map(int, string_coord.split(","))) for string_coord in re.findall("[0-9]+,[0-9]+", line)]
-        for line in lines
+        [tuple(map(int, coord.split(","))) for coord in re.findall("[0-9]+,[0-9]+", line)]
+        for line in read_lines("fourteen/input.txt")
     ]
     cave = {}
     for coord_list in coords:
@@ -61,5 +57,5 @@ def build_initial_cave():
 
 
 if __name__ == "__main__":
-    solve(part_two=False)
+    solve()
     solve(part_two=True)

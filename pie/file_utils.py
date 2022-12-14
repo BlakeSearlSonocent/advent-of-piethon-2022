@@ -10,7 +10,7 @@ def read_input(filename: str) -> str:
     return open(file_path(filename)).read().strip()
 
 
-def file_to_string_list(filename: str) -> List[str]:
+def read_lines(filename: str) -> List[str]:
     with open(file_path(filename)) as f:
         return [line.rstrip() for line in f]
 
@@ -25,5 +25,5 @@ def empty_line_separated_group_to_string_lists(filename: str) -> List[List[str]]
 
 
 def file_to_string_pairs(filename: str, separator=" ") -> List[Tuple[str, str]]:
-    lines = file_to_string_list(filename)
+    lines = read_lines(filename)
     return [(x, y) for x, y in [line.split(separator) for line in lines]]

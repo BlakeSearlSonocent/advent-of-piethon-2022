@@ -1,6 +1,6 @@
 from string import ascii_letters
 
-from pie.file_utils import file_to_string_list
+from pie.file_utils import read_lines
 
 
 def sum_character_values(characters: list[str]) -> int:
@@ -8,7 +8,7 @@ def sum_character_values(characters: list[str]) -> int:
 
 
 def part_one():
-    rucksacks = file_to_string_list("three/input.txt")
+    rucksacks = read_lines("three/input.txt")
     naughty_items = [
         (set(rucksack[0 : len(rucksack) // 2]) & set(rucksack[len(rucksack) // 2 :])).pop() for rucksack in rucksacks
     ]
@@ -16,7 +16,7 @@ def part_one():
 
 
 def part_two():
-    rucksacks = file_to_string_list("three/input.txt")
+    rucksacks = read_lines("three/input.txt")
     groups = [rucksacks[i : i + 3] for i in range(len(rucksacks)) if i % 3 == 0]
     badges = [(set(a) & set(b) & set(c)).pop() for a, b, c in groups]
     print(sum_character_values(badges))
