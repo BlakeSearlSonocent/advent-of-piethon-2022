@@ -20,25 +20,25 @@ if __name__ == "__main__":
 
     sensor_and_manhattan = [(sensor, manhattan_distance(sensor, beacon)) for sensor, beacon in sensors_and_beacons]
 
-    positive_gradient_coefficients, negative_gradient_coefficients = set(), set()
+    positive_gradient_y_intercepts, negative_gradient_y_intercepts = set(), set()
     for sensor, manhattan in sensor_and_manhattan:
         sensor_x, sensor_y = sensor
-        upper_left_coefficient = sensor_y - sensor_x + manhattan + 1
-        upper_right_coefficient = sensor_x + sensor_y + manhattan + 1
-        lower_right_coefficient = sensor_y - sensor_x - manhattan - 1
-        lower_left_coefficient = sensor_x + sensor_y - manhattan - 1
+        upper_left_y_intercept = sensor_y - sensor_x + manhattan + 1
+        upper_right_y_intercept = sensor_x + sensor_y + manhattan + 1
+        lower_right_y_intercept = sensor_y - sensor_x - manhattan - 1
+        lower_left_y_intercept = sensor_x + sensor_y - manhattan - 1
 
-        positive_gradient_coefficients.add(upper_left_coefficient)
-        positive_gradient_coefficients.add(lower_right_coefficient)
-        negative_gradient_coefficients.add(upper_right_coefficient)
-        negative_gradient_coefficients.add(lower_left_coefficient)
+        positive_gradient_y_intercepts.add(upper_left_y_intercept)
+        positive_gradient_y_intercepts.add(lower_right_y_intercept)
+        negative_gradient_y_intercepts.add(upper_right_y_intercept)
+        negative_gradient_y_intercepts.add(lower_left_y_intercept)
 
     intersections = set()
-    for positive_coefficient in positive_gradient_coefficients:
-        for negative_coefficient in negative_gradient_coefficients:
+    for positive_y_intercept in positive_gradient_y_intercepts:
+        for negative_y_intercept in negative_gradient_y_intercepts:
             intersection = (
-                (negative_coefficient - positive_coefficient) // 2,
-                (positive_coefficient + negative_coefficient) // 2,
+                (negative_y_intercept - positive_y_intercept) // 2,
+                (positive_y_intercept + negative_y_intercept) / 2,
             )
             intersections.add(intersection)
 
