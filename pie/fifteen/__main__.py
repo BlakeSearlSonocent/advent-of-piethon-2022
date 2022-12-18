@@ -1,4 +1,5 @@
 import re
+import time
 from typing import Tuple
 
 from pie.file_utils import read_lines
@@ -17,6 +18,8 @@ if __name__ == "__main__":
         [tuple(map(int, coord.split(", y="))) for coord in re.findall("x=(-?[0-9]+, y=-?[0-9]+)", line)]
         for line in lines
     ]
+
+    start = time.time()
 
     sensor_and_manhattan = [(sensor, manhattan_distance(sensor, beacon)) for sensor, beacon in sensors_and_beacons]
 
@@ -38,7 +41,7 @@ if __name__ == "__main__":
         for negative_y_intercept in negative_gradient_y_intercepts:
             intersection = (
                 (negative_y_intercept - positive_y_intercept) // 2,
-                (positive_y_intercept + negative_y_intercept) / 2,
+                (positive_y_intercept + negative_y_intercept) // 2,
             )
             intersections.add(intersection)
 
@@ -49,3 +52,4 @@ if __name__ == "__main__":
                 [manhattan_distance(sensor, intersection) > manhattan for sensor, manhattan in sensor_and_manhattan]
             ):
                 print((intersection_x * 4_000_000) + intersection_y)
+                print(time.time() - start)
