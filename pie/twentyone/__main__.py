@@ -20,29 +20,30 @@ def find_error_for_estimate(estimate: int, replaced_equations: List[str]) -> int
                 pass
                 finished = False
 
-    wgbd = loc["wgbd"]
-    rqsg = loc["rqsg"]
-    if wgbd == rqsg:
+    root = loc["root"]
+    if root == 0:
         return 0
     else:
-        return sign(wgbd - rqsg)
+        return sign(root)
 
 
 def part_two():
     equations = [line.replace(": ", " = ") for line in read_lines("twentyone/input.txt")]
-    replaced_equations = [line for line in equations if not line.startswith("humn")]
+    replaced_equations = [
+        line.replace("+", "-") if "root" in line else line for line in equations if not line.startswith("humn")
+    ]
     humn_range = (0, 9_999_999_999_999)
     located = False
     while not located:
         humn_range_low, humn_range_high = humn_range
-        estimate = int((humn_range_low + humn_range_high) // 2)
+        estimate = (humn_range_low + humn_range_high) // 2
         error = find_error_for_estimate(estimate, replaced_equations)
         if error == 0:
             print(estimate)
             break
-        elif error > 0:
-            humn_range = (humn_range_low, estimate)
         elif error < 0:
+            humn_range = (humn_range_low, estimate)
+        elif error > 0:
             humn_range = (estimate, humn_range_high)
 
 
