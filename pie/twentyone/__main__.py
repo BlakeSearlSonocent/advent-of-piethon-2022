@@ -17,7 +17,6 @@ def find_error_for_estimate(estimate: int, replaced_equations: List[str]) -> int
                 exec(equation, None, loc)
 
             except NameError:
-                pass
                 finished = False
 
     root = loc["root"]
