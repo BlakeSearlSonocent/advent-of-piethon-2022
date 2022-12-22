@@ -44,7 +44,7 @@ def part_two():
             located = True
         elif error < 0:
             humn_range = (humn_range_low, estimate)
-        elif error > 0:
+        else:
             humn_range = (estimate, humn_range_high)
 
     print(estimate)
