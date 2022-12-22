@@ -5,17 +5,17 @@ from numpy import sign
 from pie.file_utils import read_lines
 
 
-def find_error_for_equations(replaced_equations: List[str]) -> int:
-    root = calc_root_from_equations(replaced_equations)
+def find_error_for_equations(equations: List[str]) -> int:
+    root = calc_root_from_equations(equations)
     return sign(root)
 
 
-def calc_root_from_equations(replaced_equations):
+def calc_root_from_equations(equations: List[str]):
     loc = {}
     substitutions_remaining = True
     while substitutions_remaining:
         substitutions_remaining = False
-        for equation in replaced_equations:
+        for equation in equations:
             try:
                 exec(equation, None, loc)
             except NameError:
@@ -33,19 +33,18 @@ def part_two():
     without_humn = [
         line.replace("+", "-") if "root" in line else line for line in equations if not line.startswith("humn")
     ]
-    estimate, humn_range = 0, (0, 9_999_999_999_999)
+    estimate, humn_bound_low, humn_bound_high = 0, 0, 9_999_999_999_999
     located = False
     while not located:
-        humn_range_low, humn_range_high = humn_range
-        estimate = (humn_range_low + humn_range_high) // 2
+        estimate = (humn_bound_low + humn_bound_high) // 2
         estimate_equations = [*without_humn, f"humn = {estimate}"]
         error = find_error_for_equations(estimate_equations)
         if error == 0:
             located = True
         elif error < 0:
-            humn_range = (humn_range_low, estimate)
+            humn_bound_high = estimate
         else:
-            humn_range = (estimate, humn_range_high)
+            humn_bound_low = estimate
 
     print(estimate)
 
