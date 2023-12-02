@@ -1,6 +1,6 @@
 from string import ascii_letters
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def solve(with_start=True):
@@ -29,7 +29,7 @@ def solve(with_start=True):
 
 
 def setup_problem():
-    grid = [list(line) for line in read_lines("twelve/input.txt")]
+    grid = [list(line) for line in read_lines()]
     row_count = len(grid)
     col_count = len(grid[0])
     start_x, start_y = start = [(i, j) for j in range(row_count) for i in range(col_count) if grid[j][i] == "S"][0]

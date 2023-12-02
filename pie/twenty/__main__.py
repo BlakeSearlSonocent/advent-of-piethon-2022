@@ -1,7 +1,7 @@
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 if __name__ == "__main__":
-    encrypted_file = [int(line.strip()) * 811589153 for line in read_lines("twenty/input.txt")]
+    encrypted_file = [int(line.strip()) * 811589153 for line in read_lines()]
     mixing = [(idx, x) for idx, x in enumerate(encrypted_file)]
 
     for _ in range(10):

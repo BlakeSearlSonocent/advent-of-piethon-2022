@@ -1,11 +1,11 @@
 from functools import reduce
 from typing import List
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def solve():
-    lines = read_lines("eight/input.txt")
+    lines = read_lines()
     forest = [[int(tree) for tree in line] for line in lines]
 
     visible_trees = 0

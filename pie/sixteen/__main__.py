@@ -1,7 +1,7 @@
 import re
 from typing import Tuple
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def max_flow(current: str, opened: Tuple, t: int, elephant_played: bool) -> int:
@@ -29,7 +29,7 @@ def max_flow(current: str, opened: Tuple, t: int, elephant_played: bool) -> int:
 if __name__ == "__main__":
     flows = {}
     neighbours = {}
-    for line in read_lines("sixteen/input.txt"):
+    for line in read_lines():
         valve = line[6:8]
         flow = int(re.findall("[0-9]+", line)[0])
         _, neighbour_str = line.split(";")

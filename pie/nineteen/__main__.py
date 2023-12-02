@@ -1,6 +1,6 @@
 import re
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def geodes_opened(
@@ -212,7 +212,7 @@ def geodes_opened(
 
 
 if __name__ == "__main__":
-    blueprints = [map(int, re.findall("[0-9]+", line)) for line in read_lines("nineteen/input.txt")]
+    blueprints = [map(int, re.findall("[0-9]+", line)) for line in read_lines()]
 
     # scores = [] for i, ore_cost, clay_cost, obsidian_cost_ore, obsidian_cost_clay, geode_cost_ore,
     # geode_cost_obsidian in blueprints: scores.append(geodes_opened(24, ore_cost, clay_cost, obsidian_cost_ore,

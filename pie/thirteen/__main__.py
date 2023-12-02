@@ -1,7 +1,7 @@
 import functools
 from math import prod
 
-from pie.file_utils import empty_line_separated_group_to_string_lists
+from utils.file_utils import empty_line_separated_group_to_string_lists
 
 
 def compare_packets(first, second) -> int:
@@ -21,18 +21,12 @@ def compare_packets(first, second) -> int:
 
 
 def part_one():
-    pairs = [
-        [eval(packet) for packet in packet_pair]
-        for packet_pair in empty_line_separated_group_to_string_lists("thirteen/input.txt")
-    ]
+    pairs = [[eval(packet) for packet in packet_pair] for packet_pair in empty_line_separated_group_to_string_lists()]
     print(sum([idx for idx, (first, second) in enumerate(pairs, 1) if compare_packets(first, second) <= -1]))
 
 
 def part_two():
-    pairs = [
-        [eval(packet) for packet in packet_pair]
-        for packet_pair in empty_line_separated_group_to_string_lists("thirteen/input.txt")
-    ]
+    pairs = [[eval(packet) for packet in packet_pair] for packet_pair in empty_line_separated_group_to_string_lists()]
 
     all_packets = [packet for pair in [*pairs, [[[2]], [[6]]]] for packet in pair]
     sorted_packets = sorted(all_packets, key=functools.cmp_to_key(compare_packets))

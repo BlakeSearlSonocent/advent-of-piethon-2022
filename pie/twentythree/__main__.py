@@ -2,7 +2,7 @@ import collections
 from numbers import Complex
 from typing import Set, Tuple
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 north = -1j
 north_east = 1 + -1j
@@ -42,12 +42,7 @@ def get_suggested_move(round: int, elf: Complex, elves: Set[Complex]) -> Tuple[C
 
 
 if __name__ == "__main__":
-    elves = {
-        complex(x, y)
-        for y, row in enumerate(read_lines("twentythree/input.txt"))
-        for x, val in enumerate(row)
-        if val == "#"
-    }
+    elves = {complex(x, y) for y, row in enumerate(read_lines()) for x, val in enumerate(row) if val == "#"}
 
     for i in range(10_000_000_000):
         suggested_moves = set()

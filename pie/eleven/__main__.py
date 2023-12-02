@@ -3,7 +3,7 @@ import operator
 import re
 from typing import Callable, List, Tuple
 
-from pie.file_utils import read_input
+from utils.file_utils import read_input
 
 
 class Monkey:
@@ -45,7 +45,7 @@ class Monkey:
 
 
 def exec_rounds(part_two: bool):
-    monkeys = [Monkey.from_story(story) for story in read_input("eleven/input.txt").split("\n\n")]
+    monkeys = [Monkey.from_story(story) for story in read_input().split("\n\n")]
     lcm = math.lcm(*[monkey.modulo for monkey in monkeys])
     for _ in range(10000 if part_two else 20):
         for monkey in monkeys:

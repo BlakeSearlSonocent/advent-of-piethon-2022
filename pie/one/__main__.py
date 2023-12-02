@@ -1,10 +1,10 @@
 from typing import List
 
-from pie.file_utils import empty_line_separated_group_to_int_lists
+from utils.file_utils import empty_line_separated_group_to_int_lists
 
 
 def get_elf_calories() -> List[int]:
-    elf_pockets = empty_line_separated_group_to_int_lists("one/input.txt")
+    elf_pockets = empty_line_separated_group_to_int_lists()
     return [sum(pocket) for pocket in elf_pockets]
 
 

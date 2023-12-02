@@ -2,7 +2,7 @@ from typing import List
 
 from numpy import sign
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def find_error_for_equations(equations: List[str]) -> int:
@@ -24,12 +24,12 @@ def calc_root_from_equations(equations: List[str]):
 
 
 def part_one():
-    equations = [line.replace(": ", " = ") for line in read_lines("twentyone/input.txt")]
+    equations = [line.replace(": ", " = ") for line in read_lines()]
     print(calc_root_from_equations(equations))
 
 
 def part_two():
-    equations = [line.replace(": ", " = ") for line in read_lines("twentyone/input.txt")]
+    equations = [line.replace(": ", " = ") for line in read_lines()]
     without_humn = [
         line.replace("+", "-") if "root" in line else line for line in equations if not line.startswith("humn")
     ]

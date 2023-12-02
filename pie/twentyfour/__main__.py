@@ -1,7 +1,7 @@
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 if __name__ == "__main__":
-    lines = read_lines("twentyfour/input.txt")
+    lines = read_lines()
     walls = set()
     blizzards = set()
 

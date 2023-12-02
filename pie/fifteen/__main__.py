@@ -2,7 +2,7 @@ import re
 import time
 from typing import Tuple
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def manhattan_distance(first: Tuple[int, int], second: Tuple[int, int]) -> int:
@@ -13,7 +13,7 @@ def manhattan_distance(first: Tuple[int, int], second: Tuple[int, int]) -> int:
 
 
 if __name__ == "__main__":
-    lines = read_lines("fifteen/input.txt")
+    lines = read_lines()
     sensors_and_beacons = [
         [tuple(map(int, coord.split(", y="))) for coord in re.findall("x=(-?[0-9]+, y=-?[0-9]+)", line)]
         for line in lines

@@ -2,7 +2,7 @@ from typing import Tuple
 
 from numpy import sign, subtract
 
-from pie.file_utils import file_to_string_pairs
+from utils.file_utils import file_to_string_pairs
 
 moves = {"U": (0, 1), "D": (0, -1), "R": (1, 0), "L": (-1, 0)}
 
@@ -16,7 +16,7 @@ def knot_delta(lead_knot: Tuple[int, int], follow_knot: Tuple[int, int]) -> Tupl
 
 
 def count_tail_positions(knot_count: int):
-    cmds = [cmd for cmd, qty in file_to_string_pairs("nine/input.txt") for _ in range(int(qty))]
+    cmds = [cmd for cmd, qty in file_to_string_pairs() for _ in range(int(qty))]
 
     knots = [(0, 0) for _ in range(knot_count)]
     tail_positions = {(0, 0)}

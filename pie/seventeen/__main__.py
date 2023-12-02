@@ -1,4 +1,4 @@
-from pie.file_utils import read_input
+from utils.file_utils import read_input
 
 horizontal = [(2, 0), (3, 0), (4, 0), (5, 0)]
 cross = [(2, 1), (3, 0), (3, 1), (3, 2), (4, 1)]
@@ -8,7 +8,7 @@ square = [(2, 0), (2, 1), (3, 0), (3, 1)]
 shapes = [horizontal, cross, l_shape, vertical, square]
 
 if __name__ == "__main__":
-    jets = [1 if jet == ">" else -1 for jet in read_input("seventeen/input.txt")]
+    jets = [1 if jet == ">" else -1 for jet in read_input()]
     print(jets)
 
     tetris = {(x, 0) for x in range(7)}

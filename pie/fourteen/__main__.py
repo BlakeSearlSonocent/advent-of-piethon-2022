@@ -2,7 +2,7 @@ import re
 
 from numpy import subtract, sign
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def solve(part_two=False):
@@ -38,8 +38,7 @@ def get_new_sand(cave, sand):
 
 def build_initial_cave():
     coords = [
-        [tuple(map(int, coord.split(","))) for coord in re.findall("[0-9]+,[0-9]+", line)]
-        for line in read_lines("fourteen/input.txt")
+        [tuple(map(int, coord.split(","))) for coord in re.findall("[0-9]+,[0-9]+", line)] for line in read_lines()
     ]
     cave = {}
     for coord_list in coords:

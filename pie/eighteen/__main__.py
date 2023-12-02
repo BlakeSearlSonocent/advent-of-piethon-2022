@@ -1,6 +1,6 @@
 from typing import Tuple, Set
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 
 def get_neighbours(cube: Tuple[int, int, int]) -> Set[Tuple[int, int, int]]:
@@ -9,12 +9,12 @@ def get_neighbours(cube: Tuple[int, int, int]) -> Set[Tuple[int, int, int]]:
 
 
 def part_one():
-    cubes = {tuple(map(int, line.split(","))) for line in read_lines("eighteen/input.txt")}
+    cubes = {tuple(map(int, line.split(","))) for line in read_lines()}
     print(sum([len(get_neighbours(cube) - cubes) for cube in cubes]))
 
 
 def part_two():
-    cubes = {tuple(map(int, line.split(","))) for line in read_lines("eighteen/input.txt")}
+    cubes = {tuple(map(int, line.split(","))) for line in read_lines()}
     min_x, max_x = min(x for x, _, _ in cubes), max(x for x, _, _ in cubes)
     min_y, max_y = min(y for _, y, _ in cubes), max(y for _, y, _ in cubes)
     min_z, max_z = min(z for _, _, z in cubes), max(z for _, _, z in cubes)

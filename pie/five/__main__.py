@@ -2,7 +2,7 @@ import re
 from copy import deepcopy
 from typing import List, Tuple
 
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 stacks_input = {
     1: list("QFMRLWCV"),
@@ -36,7 +36,7 @@ def print_top_of_stacks(stacks: dict[int, list[str]]):
 
 
 def get_commands() -> List[Tuple[int, int, int]]:
-    lines = read_lines("five/input.txt")
+    lines = read_lines()
     commands = []
     for line in lines:
         qty, old, new = re.findall(r"\d+", line)

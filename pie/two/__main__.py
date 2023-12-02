@@ -1,4 +1,4 @@
-from pie.file_utils import file_to_string_pairs
+from utils.file_utils import file_to_string_pairs
 
 
 def map_to_symbol(choice: str) -> str:
@@ -73,13 +73,13 @@ def get_required_symbol(opponent_choice: str, requirement: str) -> str:
 
 
 def part_one():
-    pairs = file_to_string_pairs("two/input.txt")
+    pairs = file_to_string_pairs()
     strategy = [(map_to_symbol(first), map_to_symbol(second)) for first, second in pairs]
     print(sum([get_score(opponent, my) for opponent, my in strategy]))
 
 
 def part_two():
-    strategy_input = file_to_string_pairs("two/input.txt")
+    strategy_input = file_to_string_pairs()
     mapped_strategy = [(map_to_symbol(x), map_to_win_requirement(y)) for x, y in strategy_input]
     pairs = [(opponent, get_required_symbol(opponent, requirement)) for (opponent, requirement) in mapped_strategy]
     print(sum([get_score(opponent, my) for opponent, my in pairs]))

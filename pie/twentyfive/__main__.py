@@ -1,4 +1,4 @@
-from pie.file_utils import read_lines
+from utils.file_utils import read_lines
 
 snafu_decimal = {"2": 2, "1": 1, "0": 0, "-": -1, "=": -2}
 
@@ -31,6 +31,6 @@ def decimal_to_snafu(decimal: int) -> str:
 
 
 if __name__ == "__main__":
-    decimals = [snafu_to_decimal(line) for line in read_lines("twentyfive/input.txt")]
+    decimals = [snafu_to_decimal(line) for line in read_lines()]
     target = sum(decimals)
     print(f"snafu of {target} is {decimal_to_snafu(target)}")
