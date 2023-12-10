@@ -1,20 +1,15 @@
 import re
-from typing import List
 
 from utils.file_utils import read_lines
 
-
-def difference_sequence(sequence: List[int]) -> List[int]:
-    return [sequence[i + 1] - sequence[i] for i in range(len(sequence) - 1)]
-
-
-def part_one():
+if __name__ == "__main__":
+    sequences = [[int(item) for item in re.findall(r"-*\d+", line)] for line in read_lines()]
     extrapolated_sequences = []
     for sequence in sequences:
         sequence_sequences = [sequence]
         next_sequence = sequence
         while set(sequence_sequences[-1]) != {0}:
-            next_sequence = difference_sequence(next_sequence)
+            next_sequence = [next_sequence[i + 1] - next_sequence[i] for i in range(len(next_sequence) - 1)]
             sequence_sequences.append(next_sequence)
 
         sequence_sequences = sequence_sequences[::-1]
@@ -28,8 +23,3 @@ def part_one():
 
     print(sum([sequence[-1] for sequence in extrapolated_sequences]))
     print(sum([sequence[0] for sequence in extrapolated_sequences]))
-
-
-if __name__ == "__main__":
-    sequences = [[int(item) for item in re.findall(r"-*\d+", line)] for line in read_lines()]
-    part_one()
