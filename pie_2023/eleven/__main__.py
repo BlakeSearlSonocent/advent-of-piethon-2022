@@ -8,7 +8,7 @@ if __name__ == "__main__":
     empty_columns = [i for i in range(len(grid[0])) if all([row[i] == "." for row in grid])]
 
     galaxies = [[x, y] for x in range(len(grid[0])) for y in range(len(grid)) if grid[y][x] == "#"]
-    galaxy_combinations = list(combinations(galaxies, 2))
+    galaxy_combinations = combinations(galaxies, 2)
     distances = []
     for combination in galaxy_combinations:
         x_1, x_2, y_1, y_2 = combination[0][0], combination[1][0], combination[0][1], combination[1][1]
